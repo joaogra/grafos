@@ -77,24 +77,6 @@ grafos/
 
 ---
 
-## Leitura de grafo via arquivo
-
-O método `lerArquivo` aceita arquivos de texto no seguinte formato:
-
-```
-# Grafo não ponderado — cada linha: origem destino
-1 2
-1 3
-2 4
-
-# Grafo ponderado — cada linha: origem destino peso
-1 2 5.0
-1 3 2.5
-2 4 1.0
-
-# Vértice isolado — apenas um número na linha
-7
-```
 
 Exemplo de uso no código:
 
