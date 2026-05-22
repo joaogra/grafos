@@ -1,9 +1,11 @@
 #include <iostream>
-#include "GrafoTests.h"
+#include "Menu.h"
+
 using namespace std;
 
-int main()
-{
-    GrafoTests testes;
-    testes.testAll();
+int main() {
+
+    Menu::iniciar();
+
+    return 0;
 }
