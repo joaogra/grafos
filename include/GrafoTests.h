@@ -1,35 +1,75 @@
 #ifndef GRAFO_TESTS_H
 #define GRAFO_TESTS_H
 
+#include "Grafo.h"
+#include <vector>
+
 class GrafoTests {
 public:
   static void testAll();
 
 
 private:
-  static void testAdicionarVertice();
-  static void testRemoverVertice();
+  class GrafoWrapper {
+  private:
+    Grafo* grafo;
 
-  static void testAdicionarAresta();
-  static void testAdicionarArestaOrientada();
-  static void testRemoverAresta();
-  static void testRemoverArestaOrientada();
+  public:
+    GrafoWrapper(bool orientado) {
+        grafo = new Grafo(orientado, true);
+    }
 
-  static void testVerificarExistenciaAresta();
+    ~GrafoWrapper() {
+        delete grafo;
+    }
 
-  static void testAlterarPesoAresta();
-  static void testAlterarPesoArestaOrientada();
+    void inserirVertice(int v) {
+        grafo->addVertice(v);
+    }
 
-  static void testImprimirGrafo();
+    void removerVertice(int v) {
+        grafo->removeVertice(v);
+    }
 
-  static void testGetGrau();
+    void inserirAresta(int u, int v, double peso = 1.0) {
+        grafo->addAresta(u, v, peso);
+    }
 
-  static void testListarVizinhos();
+    void removerAresta(int u, int v) {
+        grafo->removeAresta(u, v);
+    }
 
-  static void testVerificarAdjacencia();
-  static void testVerificarAdjacenciaOrientada();
+    bool verificarAresta(int u, int v) {
+        return grafo->verificarAdjacencia(u, v);
+    }
 
-  static void testPrimAGM();
+    void alterarPesoAresta(int u, int v, double peso) {
+        grafo->alterarPesoAresta(u, v, peso);
+    }
+
+    void exibirGrafo() {
+        grafo->imprimirGrafo();
+    }
+
+    int grauVertice(int v) {
+        int grau = grafo->getGrau(v);
+
+        //O testAll espera 0 para vertice inexistente
+        if (grau < 0) {
+            return 0;
+        }
+
+        return grau;
+    }
+
+    vector<int> listarVizinhos(int v) {
+        return grafo->listarVizinhos(v);
+    }
+
+    bool saoAdjacentes(int u, int v) {
+        return grafo->verificarAdjacencia(u, v);
+    }
+};
 
 
 };

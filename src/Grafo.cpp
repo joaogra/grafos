@@ -170,6 +170,11 @@ struct ArestaAux {
 
 Grafo* Grafo::primAGM(double* custo) {
 
+    if(!orientado){
+        cerr << "Erro: O algoritmo exige um grafo nao orientado" << endl;
+        return nullptr;
+    }
+
     if(!ponderado){
         cerr << "Erro: O algoritmo exige um grafo ponderado" << endl;
         return nullptr;
