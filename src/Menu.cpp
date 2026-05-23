@@ -236,6 +236,7 @@ void Menu::menuInterativo() {
                 Grafo* agm = grafo.primAGM(&custo);
                 cout << "Impressao AGM\n";
                 agm->imprimirGrafo();
+                delete agm;
                 break;
             }
 

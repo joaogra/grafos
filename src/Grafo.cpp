@@ -51,6 +51,10 @@ void Grafo::removeVertice(int id) {
     numVertices--;
 }
 void Grafo::addAresta(int origem, int destino, double peso) {
+    if (verificarAdjacencia(origem, destino)) {
+        return; 
+    }
+
     addVertice(origem);
     addVertice(destino);
     Vertice* vOrigem = vertices[origem];
